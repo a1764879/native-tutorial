@@ -1,12 +1,24 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Menu from './MenuComponent'
 import { DISHES } from '../shared/dishes'
+import DishDetail from './DishDetailComponent';
+import {View} from 'react-native'
 
 const Main = () => {
     const dishes = DISHES
+    const [selectedDish, setSelectedDish] = useState(null)
+
+    function onDishSelect(dishId) {
+        setSelectedDish(dishId)
+    }
 
     return (
-        <Menu dishes={dishes} />
+        <View>
+            <Menu dishes={dishes} 
+                onPress={(dishId) => onDishSelect(dishId)}
+            />
+            <DishDetail dish={dishes.filter((dish)=> dish.id === selectedDish )[0]} />
+        </View>
     );
 }
 

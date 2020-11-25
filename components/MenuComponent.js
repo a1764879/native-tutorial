@@ -8,12 +8,13 @@ const Menu = (props) => {
         return (
             <ListItem
                 key={index}
-                title={item.name}
-                subtitle={item.description}
                 hideChevron={true}
-                // leftAvatar={{source: require ('./images/uthappizza.png') }}
-
-            />
+                onPress={()=>props.onPress(item.id)}>
+                <ListItem.Content>
+                    <ListItem.Title>{item.name}</ListItem.Title>
+                    <ListItem.Subtitle>{item.description}</ListItem.Subtitle>
+                </ListItem.Content>    
+            </ListItem>
         )
     }
 
